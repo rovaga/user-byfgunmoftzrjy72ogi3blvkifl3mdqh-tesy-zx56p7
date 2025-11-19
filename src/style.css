@@ -1,0 +1,139 @@
+:root {
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #fefefe;
+  background: #05070f;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1f3b73 0%, #08111f 55%, #04060b 100%);
+  color: inherit;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  background: #000;
+}
+
+canvas:active {
+  cursor: grabbing;
+}
+
+.hud {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: min(360px, calc(100% - 2rem));
+  padding: 1.2rem 1.3rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(8, 14, 24, 0.86);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+.hud__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hud h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+}
+
+.hud p {
+  margin: 0.4rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.status {
+  font-weight: 600;
+  color: #ffe791;
+}
+
+.status--mounted {
+  color: #8df4c4;
+}
+
+.actions {
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.actions li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.actions strong {
+  font-weight: 600;
+  color: #fff;
+  min-width: 4rem;
+  letter-spacing: 0.03em;
+}
+
+kbd {
+  font-family: inherit;
+  display: inline-block;
+  padding: 0.15rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+}
+
+body.mounted .hud {
+  border-color: rgba(141, 244, 196, 0.4);
+  box-shadow: 0 18px 30px rgba(17, 255, 190, 0.15);
+}
+
+@media (max-width: 640px) {
+  .hud {
+    top: auto;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+  }
+
+  .actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font-size: 0.9rem;
+  }
+
+  .actions strong {
+    min-width: auto;
+  }
+}
